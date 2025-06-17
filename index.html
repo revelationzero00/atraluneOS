@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>atraluneOS - evelyn.exe</title>
+  <title>evelyn.exe - atraluneOS</title>
   <style>
     body {
       margin: 0;
-      background: black;
-      color: #00ffcc;
+      background: #0b0b0b;
+      color: #ff0033;
       font-family: 'Courier New', monospace;
       display: flex;
       flex-direction: column;
@@ -20,69 +20,78 @@
     }
 
     .window {
-      background: #111;
-      border: 2px solid #00ffcc;
+      background: #151515;
+      border: 3px double #ff0033;
       padding: 20px;
       width: 90%;
-      max-width: 600px;
-      box-shadow: 0 0 12px #00ffcc;
-      border-radius: 10px;
+      max-width: 640px;
+      box-shadow: 0 0 12px #ff0033;
+      border-radius: 4px;
     }
 
     h1 {
-      font-size: 24px;
-      color: #ff44cc;
-      margin-bottom: 10px;
+      font-size: 22px;
+      color: #ff3366;
+      margin-bottom: 12px;
+      text-shadow: 0 0 4px #ff3366;
     }
 
     .terminal-text {
       white-space: pre-wrap;
-      line-height: 1.4;
-      margin-top: 20px;
-      min-height: 120px;
+      line-height: 1.5;
+      margin-top: 15px;
+      min-height: 140px;
+      text-shadow: 0 0 3px red;
     }
 
     .glitch {
-      animation: glitchAnim 0.8s infinite;
+      animation: glitchAnim 0.7s infinite;
     }
 
     @keyframes glitchAnim {
-      0% { text-shadow: 2px 0 red, -2px 0 blue; }
-      20% { text-shadow: -2px 0 lime, 2px 0 cyan; }
-      40% { text-shadow: 2px 0 magenta, -2px 0 yellow; }
-      60% { text-shadow: -2px 0 cyan, 2px 0 red; }
-      80% { text-shadow: 2px 0 white, -2px 0 blue; }
+      0% { text-shadow: 2px 0 red, -2px 0 #330000; }
+      20% { text-shadow: -2px 0 #990000, 2px 0 #330000; }
+      40% { text-shadow: 2px 0 #ff0033, -2px 0 #990000; }
+      60% { text-shadow: -2px 0 #330000, 2px 0 #ff0033; }
+      80% { text-shadow: 2px 0 #cc0000, -2px 0 #ff6666; }
       100% { text-shadow: none; }
     }
 
     button {
-      font-size: 16px;
-      padding: 8px 24px;
+      font-size: 15px;
+      padding: 6px 20px;
       background: black;
-      color: lime;
-      border: 2px solid lime;
-      border-radius: 6px;
+      color: #ff0033;
+      border: 2px solid #ff0033;
+      border-radius: 4px;
       font-family: 'Courier New', monospace;
       cursor: pointer;
-      box-shadow: 0 0 6px lime;
+      box-shadow: 0 0 6px #ff0033;
       margin-top: 20px;
     }
 
     iframe {
       margin-top: 20px;
-      border-radius: 6px;
-      box-shadow: 0 0 12px #00ffcc;
+      border-radius: 4px;
+      box-shadow: 0 0 10px #990000;
+    }
+
+    /* Scrollbar retro */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #ff0033;
     }
   </style>
 </head>
 <body>
 
   <div class="window">
-    <h1>evelyn.exe - Terminal</h1>
+    <h1>evelyn.exe :: atraluneOS system core</h1>
     <div id="terminal" class="terminal-text glitch">booting...</div>
 
-    <!-- Tombol dan SoundCloud -->
-    <button id="play-btn" style="display:none;">▶️ Play Evelyn Audio</button>
+    <button id="play-btn" style="display:none;">▶️ Play Evelyn Transmission</button>
 
     <iframe
       id="sc-frame"
@@ -90,7 +99,7 @@
       scrolling="no" frameborder="no"
       allow="autoplay"
       style="display:none;"
-      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/reicilia/you-are-not-alone-1&color=%230066cc&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
+      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/reicilia/you-are-not-alone-1&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
     </iframe>
   </div>
 
@@ -100,12 +109,13 @@
     const iframe = document.getElementById('sc-frame');
 
     const bootLines = [
-      "Initializing...",
-      "> system trace enabled",
-      "> connecting to dream layer...",
-      "> ██████ protocol unlocked",
-      "> message embedded in memory fragment",
-      "> welcome, subject [REDACTED]"
+      "system override :: INITIATE [REDACTED]",
+      "bootloader active... checking dream sector...",
+      "> TRACE CONNECTED",
+      "> running evelynAI_core.exe",
+      "> loading encrypted data...",
+      "> ████ UNLOCKED",
+      "> atraluneOS :: WELCOME BACK, SUBJECT // NULL"
     ];
 
     let index = 0;
@@ -114,7 +124,7 @@
       if (index < bootLines.length) {
         terminal.textContent += '\n' + bootLines[index];
         index++;
-        setTimeout(showNextLine, 800);
+        setTimeout(showNextLine, 700);
       } else {
         terminal.classList.remove("glitch");
         btn.style.display = 'inline-block';
@@ -125,7 +135,7 @@
     setTimeout(() => {
       terminal.textContent = "";
       showNextLine();
-    }, 1500);
+    }, 1800);
 
     btn.addEventListener('click', function () {
       iframe.src = iframe.src.replace('auto_play=false', 'auto_play=true');
