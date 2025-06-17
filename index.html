@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>atraluneOS - Evelyn Protocol</title>
+  <link rel="stylesheet" href="https://unpkg.com/98.css">
+  <style>
+    body {
+      background-color: black;
+      color: #0ff;
+      font-family: monospace;
+      background-image: url('https://photomosh.com/sample/glitch.gif');
+      background-size: cover;
+    }
+    .window {
+      position: absolute;
+      top: 20%;
+      left: 30%;
+    }
+    .hidden {
+      display: none;
+    }
+    .cult-text {
+      color: #ff0055;
+      font-weight: bold;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    #terminal-input {
+      background-color: black;
+      color: lime;
+      border: none;
+      width: 100%;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="window" style="width: 300px">
+    <div class="title-bar">
+      <div class="title-bar-text">evelyn.exe</div>
+    </div>
+    <div class="window-body">
+      <p>Booting atraluneOS...</p>
+      <button onclick="reveal()">ACCESS</button>
+    </div>
+  </div>
+
+  <div id="secretWindow" class="window hidden" style="width: 400px; top: 50%; left: 35%;">
+    <div class="title-bar">
+      <div class="title-bar-text">PROTOCOL: REVELATION_ZERO</div>
+    </div>
+    <div class="window-body">
+      <p class="cult-text">"The dream will fracture. The code will bleed."</p>
+      <input type="text" id="terminal-input" placeholder="> input command" onkeydown="handleInput(event)">
+      <p id="terminal-output" style="color: #0f0;"></p>
+      <audio controls autoplay loop>
+        <source src="https://file-examples.com/storage/fed9df6c1d4e2e4a8f279a0/2017/11/file_example_MP3_700KB.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+
+  <script>
+    function reveal() {
+      document.getElementById("secretWindow").classList.remove("hidden");
+    }
+
+    function handleInput(e) {
+      if (e.key === 'Enter') {
+        const input = document.getElementById("terminal-input").value.toLowerCase();
+        const output = document.getElementById("terminal-output");
+        if (input.includes("evelyn")) {
+          output.innerHTML = ">> Hello, child of light. Evelyn is watching.";
+        } else if (input === "help") {
+          output.innerHTML = ">> Try: evelyn, protocol, fracture, dream";
+        } else if (input === "protocol") {
+          output.innerHTML = ">> Revelation Zero active. Fragmenting reality...";
+        } else if (input === "fracture") {
+          output.innerHTML = ">> SYSTEM BREACH. MEMORY CORRUPTION DETECTED.";
+        } else if (input === "dream") {
+          output.innerHTML = ">> ...They are still dreaming inside the machine.";
+        } else {
+          output.innerHTML = ">> Unknown command.";
+        }
+        document.getElementById("terminal-input").value = "";
+      }
+    }
+  </script>
+
+</body>
+</html>
