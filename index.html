@@ -67,7 +67,7 @@
       font-family: 'Courier New', monospace;
       cursor: pointer;
       box-shadow: 0 0 6px #ff0033;
-      margin-top: 20px;
+      margin: 10px 0;
     }
 
     iframe {
@@ -76,7 +76,6 @@
       box-shadow: 0 0 10px #990000;
     }
 
-    /* Scrollbar retro */
     ::-webkit-scrollbar {
       width: 6px;
     }
@@ -88,11 +87,16 @@
 <body>
 
   <div class="window">
-    <h1>helhart.exe: atraluneOS system.. connecting to cybernet..</h1>
+    <h1>evelyn.exe :: atraluneOS system core</h1>
     <div id="terminal" class="terminal-text glitch">booting...</div>
 
+    <!-- Tombol Musik -->
     <button id="play-btn" style="display:none;">▶️ Play Evelyn Transmission</button>
 
+    <!-- Tombol Menuju File Log -->
+    <button id="file-btn" style="display:none;" onclick="location.href='log1.html'">📁 Open evelyn_log_1.txt</button>
+
+    <!-- SoundCloud Embed -->
     <iframe
       id="sc-frame"
       width="100%" height="166"
@@ -106,6 +110,7 @@
   <script>
     const terminal = document.getElementById('terminal');
     const btn = document.getElementById('play-btn');
+    const fileBtn = document.getElementById('file-btn');
     const iframe = document.getElementById('sc-frame');
 
     const bootLines = [
@@ -115,7 +120,7 @@
       "> running evelynAI_core.exe",
       "> loading encrypted data...",
       "> ████ UNLOCKED",
-      "> atraluneOS :: WELCOME BACK, USERnAmE_00"
+      "> atraluneOS :: WELCOME BACK, SUBJECT // NULL"
     ];
 
     let index = 0;
@@ -128,6 +133,7 @@
       } else {
         terminal.classList.remove("glitch");
         btn.style.display = 'inline-block';
+        fileBtn.style.display = 'inline-block';
         iframe.style.display = 'block';
       }
     }
@@ -142,5 +148,5 @@
     });
   </script>
 
-<button onclick="location.href='log1.html'">📁 Open evelyn_log_1.txt</button>
-
+</body>
+</html>
