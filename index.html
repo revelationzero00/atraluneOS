@@ -16,6 +16,7 @@
       justify-content: flex-start;
       min-height: 100vh;
       padding: 40px 20px;
+      overflow-x: hidden;
     }
 
     .window {
@@ -28,29 +29,30 @@
       border-radius: 10px;
     }
 
-    .window h1 {
+    h1 {
       font-size: 24px;
-      margin-bottom: 10px;
       color: #ff44cc;
+      margin-bottom: 10px;
     }
 
     .terminal-text {
       white-space: pre-wrap;
       line-height: 1.4;
       margin-top: 20px;
+      min-height: 120px;
     }
 
-    .glow {
-      animation: glow 1s ease-in-out infinite alternate;
+    .glitch {
+      animation: glitchAnim 0.8s infinite;
     }
 
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 5px #00ffcc;
-      }
-      to {
-        text-shadow: 0 0 20px #00ffcc;
-      }
+    @keyframes glitchAnim {
+      0% { text-shadow: 2px 0 red, -2px 0 blue; }
+      20% { text-shadow: -2px 0 lime, 2px 0 cyan; }
+      40% { text-shadow: 2px 0 magenta, -2px 0 yellow; }
+      60% { text-shadow: -2px 0 cyan, 2px 0 red; }
+      80% { text-shadow: 2px 0 white, -2px 0 blue; }
+      100% { text-shadow: none; }
     }
 
     button {
@@ -77,34 +79,58 @@
 
   <div class="window">
     <h1>evelyn.exe - Terminal</h1>
-    <div class="terminal-text glow">
-      Initializing...  
-      > system trace enabled  
-      > connecting to dream layer...  
-      > ██████ protocol unlocked  
-      > message embedded in memory fragment  
-      > welcome, subject [REDACTED]
-    </div>
+    <div id="terminal" class="terminal-text glitch">booting...</div>
 
     <!-- Tombol dan SoundCloud -->
-    <button id="play-btn">▶️ Play Evelyn Audio</button>
+    <button id="play-btn" style="display:none;">▶️ Play Evelyn Audio</button>
 
     <iframe
       id="sc-frame"
       width="100%" height="166"
       scrolling="no" frameborder="no"
       allow="autoplay"
+      style="display:none;"
       src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/reicilia/you-are-not-alone-1&color=%230066cc&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
     </iframe>
   </div>
 
   <script>
-    document.getElementById('play-btn').addEventListener('click', function () {
-      const iframe = document.getElementById('sc-frame');
+    const terminal = document.getElementById('terminal');
+    const btn = document.getElementById('play-btn');
+    const iframe = document.getElementById('sc-frame');
+
+    const bootLines = [
+      "Initializing...",
+      "> system trace enabled",
+      "> connecting to dream layer...",
+      "> ██████ protocol unlocked",
+      "> message embedded in memory fragment",
+      "> welcome, subject [REDACTED]"
+    ];
+
+    let index = 0;
+
+    function showNextLine() {
+      if (index < bootLines.length) {
+        terminal.textContent += '\n' + bootLines[index];
+        index++;
+        setTimeout(showNextLine, 800);
+      } else {
+        terminal.classList.remove("glitch");
+        btn.style.display = 'inline-block';
+        iframe.style.display = 'block';
+      }
+    }
+
+    setTimeout(() => {
+      terminal.textContent = "";
+      showNextLine();
+    }, 1500);
+
+    btn.addEventListener('click', function () {
       iframe.src = iframe.src.replace('auto_play=false', 'auto_play=true');
     });
   </script>
 
 </body>
 </html>
-
