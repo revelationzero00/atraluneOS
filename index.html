@@ -1,116 +1,110 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>atraluneOS - Evelyn Protocol</title>
-  <link rel="stylesheet" href="https://unpkg.com/98.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>atraluneOS - evelyn.exe</title>
   <style>
     body {
-      background-color: black;
-      color: #0ff;
-      font-family: monospace;
-      background-image: url('https://photomosh.com/sample/glitch.gif');
-      background-size: cover;
+      margin: 0;
+      background: black;
+      color: #00ffcc;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 40px 20px;
     }
+
     .window {
-      position: absolute;
-      top: 20%;
-      left: 30%;
+      background: #111;
+      border: 2px solid #00ffcc;
+      padding: 20px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 0 12px #00ffcc;
+      border-radius: 10px;
     }
-    .hidden {
-      display: none;
+
+    .window h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #ff44cc;
     }
-    .cult-text {
-      color: #ff0055;
-      font-weight: bold;
-      font-size: 14px;
-      margin-top: 10px;
+
+    .terminal-text {
+      white-space: pre-wrap;
+      line-height: 1.4;
+      margin-top: 20px;
     }
-    #terminal-input {
-      background-color: black;
+
+    .glow {
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #00ffcc;
+      }
+      to {
+        text-shadow: 0 0 20px #00ffcc;
+      }
+    }
+
+    button {
+      font-size: 16px;
+      padding: 8px 24px;
+      background: black;
       color: lime;
-      border: none;
-      width: 100%;
-      font-family: monospace;
+      border: 2px solid lime;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      cursor: pointer;
+      box-shadow: 0 0 6px lime;
+      margin-top: 20px;
+    }
+
+    iframe {
+      margin-top: 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 12px #00ffcc;
     }
   </style>
 </head>
 <body>
 
-
-  <br><br>
-
-  
-
-<script>
-  document.getElementById('play-btn').addEventListener('click', function () {
-    const iframe = document.getElementById('sc-frame');
-    iframe.src = iframe.src.replace('auto_play=false', 'auto_play=true');
-  });
-</script>
-
-  
-  <div class="window" style="width: 300px">
-    <div class="title-bar">
-      <div class="title-bar-text">evelyn.exe</div>
+  <div class="window">
+    <h1>evelyn.exe - Terminal</h1>
+    <div class="terminal-text glow">
+      Initializing...  
+      > system trace enabled  
+      > connecting to dream layer...  
+      > ██████ protocol unlocked  
+      > message embedded in memory fragment  
+      > welcome, subject [REDACTED]
     </div>
-    <div class="window-body">
-      <p>Booting atraluneOS...</p>
-      <button onclick="reveal()">ACCESS</button>
-    </div>
+
+    <!-- Tombol dan SoundCloud -->
+    <button id="play-btn">▶️ Play Evelyn Audio</button>
+
+    <iframe
+      id="sc-frame"
+      width="100%" height="166"
+      scrolling="no" frameborder="no"
+      allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/reicilia/you-are-not-alone-1&color=%230066cc&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
+    </iframe>
   </div>
 
-  <div id="secretWindow" class="window hidden" style="width: 400px; top: 50%; left: 35%;">
-    <div class="title-bar">
-      <div class="title-bar-text">PROTOCOL: REVELATION_ZERO</div>
-    </div>
-    <div class="window-body">
-      <p class="cult-text">"The dream will fracture. The code will bleed."</p>
-      <iframe
-    id="sc-frame"
-    width="100%" height="166"
-    scrolling="no" frameborder="no"
-    allow="autoplay"
-    style="max-width: 500px; width: 90%; border-radius: 6px; box-shadow: 0 0 12px #00ffcc;"
-    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/reicilia/you-are-not-alone-1&color=%230066cc&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
-  </iframe>
-</div>
-
-<script>
-  document.getElementById('play-btn').addEventListener('click', function() {
-    const iframe = document.getElementById('sc-frame');
-    iframe.src = iframe.src.replace('auto_play=false', 'auto_play=true');
-  });
-</script>
-
-
   <script>
-    function reveal() {
-      document.getElementById("secretWindow").classList.remove("hidden");
-    }
-
-    function handleInput(e) {
-      if (e.key === 'Enter') {
-        const input = document.getElementById("terminal-input").value.toLowerCase();
-        const output = document.getElementById("terminal-output");
-        if (input.includes("evelyn")) {
-          output.innerHTML = ">> Hello, child of light. Evelyn is watching.";
-        } else if (input === "help") {
-          output.innerHTML = ">> Try: evelyn, protocol, fracture, dream";
-        } else if (input === "protocol") {
-          output.innerHTML = ">> Revelation Zero active. Fragmenting reality...";
-        } else if (input === "fracture") {
-          output.innerHTML = ">> SYSTEM BREACH. MEMORY CORRUPTION DETECTED.";
-        } else if (input === "dream") {
-          output.innerHTML = ">> ...They are still dreaming inside the machine.";
-        } else {
-          output.innerHTML = ">> Unknown command.";
-        }
-        document.getElementById("terminal-input").value = "";
-      }
-    }
+    document.getElementById('play-btn').addEventListener('click', function () {
+      const iframe = document.getElementById('sc-frame');
+      iframe.src = iframe.src.replace('auto_play=false', 'auto_play=true');
+    });
   </script>
 
 </body>
 </html>
+
