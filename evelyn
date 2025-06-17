@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Evelyn Protocol v1</title>
+  <link rel="stylesheet" href="https://unpkg.com/98.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: monospace;
+      background-image: url('https://photomosh.com/sample/glitch.gif');
+      background-size: cover;
+    }
+    .centered {
+      position: absolute;
+      top: 20%;
+      left: 30%;
+    }
+    .hidden {
+      display: none;
+    }
+    .cult-text {
+      color: #ff0055;
+      font-weight: bold;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="window centered" style="width: 300px">
+    <div class="title-bar">
+      <div class="title-bar-text">Evelyn.exe</div>
+    </div>
+    <div class="window-body">
+      <p>Initializing Cult Protocol...</p>
+      <button onclick="revealWindow()">ACCESS</button>
+    </div>
+  </div>
+
+  <div id="secretWindow" class="window centered hidden" style="width: 400px; top: 50%; left: 35%">
+    <div class="title-bar">
+      <div class="title-bar-text">REVELATION_ZERO.dll</div>
+    </div>
+    <div class="window-body">
+      <p class="cult-text">"All light must fracture before it is reborn."</p>
+      <p>👁 Deity: Evelyn Helhart<br>☠️ Status: Awakened<br>🔒 Protocol: Zero.RZ</p>
+      <audio controls autoplay loop>
+        <source src="https://file-examples.com/storage/fed9df6c1d4e2e4a8f279a0/2017/11/file_example_MP3_700KB.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+
+  <script>
+    function revealWindow() {
+      document.getElementById("secretWindow").classList.remove("hidden");
+    }
+  </script>
+
+</body>
+</html>
